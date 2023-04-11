@@ -4,18 +4,18 @@ const app = express();
 const port = 3000;
 const cookieParser = require("cookie-parser");
 const expressLayouots = require("express-ejs-layouts");
-const db = require("./config/mongoose");
+const db = require("../config/mongoose");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const passport = require("passport");
-const passportLocal = require("./config/passport").passportLocal
+const passportLocal = require("../config/passport").passportLocal
 const MongoStore=require('connect-mongo')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(cookieParser());
-app.use(express.static("./assets"));
+app.use(express.static("../assets"));
 
 app.use(expressLayouots);
 
