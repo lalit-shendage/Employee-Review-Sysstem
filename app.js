@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require("express");
 const app = express();
-const port = 3000;
+const port =process.env.PORT|| 3000;
 const cookieParser = require("cookie-parser");
 const expressLayouots = require("express-ejs-layouts");
 const db = require("./config/mongoose");
@@ -33,7 +33,7 @@ app.use(
       maxAge: 1000 * 60 * 60,
     },
     store:new MongoStore({
-      mongoUrl:"mongodb+srv://"+process.env.mongoURI,
+      mongoUrl:"mongodb+srv://Lalit:12345@cluster0.dwnwv8t.mongodb.net/ERS",
       autoRemove:'disabled'
     },
     function(err){
