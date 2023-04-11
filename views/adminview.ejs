@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Set reviews</h2>
+        <div class="card bg-dark text-light">
+          <div class="card-body">
+            <form method="POST" action="/admin/set-Reviewers">
+              <div class="form-group">
+                <label for="recipient">Recipient</label>
+                <select id="recipient" name="Recipient" class="form-control">
+                  <option selected disabled>Select Recipient</option>
+    
+                  <% for(let i=0; i < employeeList.length; i++){ %>
+    
+                  <option value="<%= employeeList[i].id  %>">
+                    <%= employeeList[i].name %>
+                  </option>
+    
+                  <% } %>
+                </select>
+              </div>
+    
+              <div class="form-group">
+                <label for="reviewer">Reviewer</label>
+                <select id="reviewer" name="Reviewer" class="form-control">
+                  <option selected disabled>Select Reviewer</option>
+    
+                  <% for(let i = 0; i < employeeList.length; i++){ %>
+                  <option value="<%= employeeList[i].id %>">
+                    <%= employeeList[i].name %>
+                  </option>
+                  <% } %>
+                </select>
+              </div>
+    
+              <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary my-3"/>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

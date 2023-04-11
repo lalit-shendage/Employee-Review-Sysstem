@@ -1,0 +1,18 @@
+html, body {
+    height: 100%;
+    background-image: url('../images/pexels-francesco-ungaro-396547.jpg');
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content {
+    flex: 1;
+  }
+  
+  .footer {
+    margin-top: auto;
+  }
+  

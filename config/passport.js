@@ -1,0 +1,73 @@
+const passport =require('passport')
+const session = require("express-session");
+const LocalStrategy=require('passport-local').Strategy;
+
+
+const User=require('../models/User')
+
+passport.use(new LocalStrategy({
+    usernameField:'email',
+    // passwordField: "password"
+},
+async (email,password,done)=>{
+    try{
+        let user=await User.findOne({email:email})
+        
+        if (!user) { return done(null, false); }
+        let passwordValid=await user.verifyPassword(password)
+        if (!passwordValid) { return done(null, false); }
+       
+        return done(null, user);
+    }
+    catch(err){
+return done(err)
+    }
+   
+    }
+))
+
+// serializing user 
+passport.serializeUser(function(user,done){
+ 
+    done(null,user.id);
+})
+
+passport.deserializeUser(function(id, done) {
+ 
+  User.findById(id)
+    .then(user => {
+      if (!user) {
+        console.log('error in finding user')
+        return done(null, false)
+      }
+      return done(null, user)
+    })
+    .catch(err => {
+      console.error(err)
+      return done(err)
+    })
+})
+
+// check if the user is authenticated
+passport.checkAuthentication = function(req, res, next){
+  // if the user is signed in, then pass on the request to the next function(controller's action)
+  if (req.isAuthenticated()){
+      return next();
+  }
+
+  // if the user is not signed in
+  return res.redirect('/users/signin');
+}
+
+passport.setAuthenticatedUser = function(req, res, next){
+  if (req.isAuthenticated()){
+      // req.user contains the current signed in user from the session cookie and we are just sending this to the locals for the views
+      res.locals.user = req.user;
+  }
+
+  next();
+}
+
+
+
+module.exports=passport
