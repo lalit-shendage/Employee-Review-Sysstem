@@ -32,7 +32,7 @@ app.use(
       maxAge: 1000 * 60 * 60,
     },
     store:new MongoStore({
-      mongoUrl:"mongodb+srv://"+process.env.mongoURI,
+      mongoUrl:"mongodb+srv://Lalit:12345@cluster0.dwnwv8t.mongodb.net/ERS",
       autoRemove:'disabled'
     },
     function(err){
