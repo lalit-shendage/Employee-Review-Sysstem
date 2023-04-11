@@ -3,7 +3,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 
-mongoose.connect("mongodb+srv://"+process.env.mongoURI, {
+mongoose.connect("mongodb+srv://Lalit:12345@cluster0.dwnwv8t.mongodb.net/ERS", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
