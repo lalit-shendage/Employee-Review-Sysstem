@@ -5,5 +5,6 @@
 3. create .env file in your root directory
 4. create a database in mongodb
 5. in env file create mongoURI ="your databse link"
-6. run npm start command on your terminal 
-7. your app is running
+6. replace database link in index.js mongoose.js and app.js with process.env.mongoURI
+7. run npm start command on your terminal 
+8. your app is running
